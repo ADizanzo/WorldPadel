@@ -1,15 +1,19 @@
 package com.example.tortupadel;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class MisReservasActivity extends AppCompatActivity {
@@ -34,7 +38,34 @@ public class MisReservasActivity extends AppCompatActivity {
         // Establecer el adaptador en la ListView
         listView.setAdapter(adapter);
 
-
+        // Configurar el OnClickListener para el botón "Dar de Baja"
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MisReservasActivity.this);
+                builder.setTitle("¿Dar de Baja?")
+                        .setMessage("¿Desea dar de baja este turno?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Eliminar el turno de la base de datos y de la lista
+                                eliminarTurno(position);
+                                // Agregar este bloque
+                                Intent intent = new Intent();
+                                intent.putExtra("turno_dado_de_baja", adapter.getItem(position));
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // No hacer nada
+                            }
+                        })
+                        .show();
+            }
+        });
 
         // Obtén la referencia al ImageView del icono de retroceso
         ImageView backIconImageView = findViewById(R.id.backIcon);
@@ -46,7 +77,6 @@ public class MisReservasActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         // Obtén la referencia al ImageView del icono home
         ImageView homeIconImageView = findViewById(R.id.home);
@@ -60,10 +90,8 @@ public class MisReservasActivity extends AppCompatActivity {
             }
         });
 
-
         // Obtén la referencia al ImageView del icono Mis Reservas
         ImageView misReservasIconImage = findViewById(R.id.mis_reservas);
-
         // Establece un OnClickListener para el icono reservas
         misReservasIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,20 +101,37 @@ public class MisReservasActivity extends AppCompatActivity {
             }
         });
 
-
         // Obtén la referencia al ImageView del icono usuarios
         ImageView userIconImage = findViewById(R.id.user);
-
         // Establece un OnClickListener para el icono usuarios
         userIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Cuando se hace clic en el icono usuarios, inicia la UserActivity
-                Intent intent = new Intent(MisReservasActivity.this,UserActivity.class);
+                Intent intent = new Intent(MisReservasActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
+    }
 
+    private void eliminarTurno(int position) {
+        // Eliminar el turno de la base de datos
+        TurnoReservadoDataSource dataSource = new TurnoReservadoDataSource(MisReservasActivity.this);
+        try {
+            dataSource.open();
+            dataSource.eliminarTurnoReservado(adapter.getItem(position));
+            dataSource.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejar la excepción
+        }
 
+        // Eliminar el turno de la lista
+        turnosReservados.remove(position);
+
+        // Notificar al adaptador que los datos han cambiado
+        adapter.notifyDataSetChanged();
+
+        Toast.makeText(this, "Turno dado de baja", Toast.LENGTH_SHORT).show();
     }
 }

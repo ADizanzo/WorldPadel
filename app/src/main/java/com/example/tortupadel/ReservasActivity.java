@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -124,13 +125,30 @@ public class ReservasActivity extends AppCompatActivity {
     }
 
     private void mostrarTurnosDisponibles(int year, int month, int dayOfMonth) {
-        // Lógica para mostrar los turnos disponibles en el ListView
-        // Aquí puedes obtener los datos de los turnos disponibles para la fecha seleccionada
-        // y agregarlos al ArrayAdapter para que se muestren en el ListView
-        // Por ahora, simplemente mostramos los turnos disponibles que tenemos en la lista
-        adapter.clear();
-        adapter.addAll(turnosDisponibles);
+        // Obtener la fecha actual
+        Calendar fechaActual = Calendar.getInstance();
+
+        // Crear un objeto Calendar para la fecha seleccionada
+        Calendar fechaSeleccionada = Calendar.getInstance();
+        fechaSeleccionada.set(year, month, dayOfMonth);
+
+        // Verificar si la fecha seleccionada es igual o posterior a la fecha actual
+        if (fechaSeleccionada.compareTo(fechaActual) >= 0) {
+            // La fecha seleccionada es igual o posterior a la fecha actual
+            // Mostrar los turnos disponibles en el ListView
+            // Aquí puedes obtener los datos de los turnos disponibles para la fecha seleccionada
+            // y agregarlos al ArrayAdapter para que se muestren en el ListView
+            // Por ahora, simplemente mostramos los turnos disponibles que tenemos en la lista
+            adapter.clear();
+            adapter.addAll(turnosDisponibles);
+        } else {
+            // La fecha seleccionada es anterior a la fecha actual
+            // No hay turnos disponibles para esta fecha
+            Toast.makeText(this, "No hay turnos disponibles", Toast.LENGTH_SHORT).show();
+            adapter.clear();
+        }
     }
+
 
     private void mostrarDialogoReservaTurno(final String turno) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -141,13 +159,28 @@ public class ReservasActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Mostrar mensaje de reserva exitosa
                         Toast.makeText(ReservasActivity.this, "Turno Reservado", Toast.LENGTH_SHORT).show();
+
                         // Agregar el turno a la lista de turnos reservados
                         String turnoReservado = turno + " - " + obtenerFechaSeleccionada();
                         TurnosManager turnosManager = TurnosManager.getInstance();
                         turnosManager.agregarTurnoReservado(turnoReservado);
+
+                        // Agregar el turno a la base de datos
+                        TurnoReservadoDataSource dataSource = new TurnoReservadoDataSource(ReservasActivity.this);
+                        try {
+                            dataSource.open();
+                            dataSource.agregarTurnoReservado(turnoReservado);
+                            dataSource.close();
+                        } catch (SQLException e) {
+                            // Manejar la excepción
+                            e.printStackTrace();
+                        }
+
                         // Eliminar el turno de la lista de turnos disponibles
                         turnosDisponibles.remove(turno);
+
                         // Actualizar la lista de turnos disponibles en el ListView
+                        adapter.remove(turno);
                         adapter.notifyDataSetChanged();
                     }
                 })
@@ -159,6 +192,7 @@ public class ReservasActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
 
     // Método para obtener la fecha seleccionada en el calendario
     private String obtenerFechaSeleccionada() {

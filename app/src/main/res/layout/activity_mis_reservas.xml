@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Icono Back -->
+    <ImageView
+        android:id="@+id/backIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/back"
+        android:contentDescription="@string/back_icon"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- ListView -->
+    <ListView
+        android:id="@+id/listViewMisReservas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/backIcon"
+        android:layout_marginTop="32dp"
+        android:layout_above="@id/bottomNavigationBar" />
+
+    <!-- Barra de navegación inferior -->
+    <LinearLayout
+        android:id="@+id/bottomNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#000000"
+        android:padding="8dp"
+        android:layout_alignParentBottom="true">
+
+        <!-- Icono 1 (Home) -->
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            android:contentDescription="@string/home"/>
+
+        <!-- Icono 2 (Reservas) -->
+        <ImageView
+            android:id="@+id/mis_reservas"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/calendar"
+            android:contentDescription="@string/mis_reservas"/>
+
+        <!-- Icono 3 (Usuario) -->
+        <ImageView
+            android:id="@+id/user"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/usuario"
+            android:contentDescription="@string/usuario"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

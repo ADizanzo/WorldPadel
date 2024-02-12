@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">tortuPadel</string>
+
+    <!-- Logos -->
+    <string name="logo_app">Logo de la aplicación</string>
+    <string name="logo_app_blanco">Logo blanco de la aplicación</string>
+
+    <!-- Flechas -->
+    <string name="back_arrow">Flecha atrás</string>
+
+    <!-- Login y Registro -->
+    <string name="login_to_your_account">Inicia sesión en tu cuenta</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="sign_in">Iniciar sesión</string>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="sign_up">Registrarse</string>
+    <string name="create_your_account">Crea tu cuenta</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+
+    <!-- Iconos -->
+    <string name="home">Inicio</string>
+    <string name="mis_reservas">Mis Reservas</string>
+    <string name="usuario">Usuario</string>
+    <string name="back_icon" />
+    <string name="reservar_ahora">RESERVAR AHORA</string>
+    <string name="icon_menu">icon_menu</string>
+
+    <!-- Textos -->
+    <string name="tortugas_padel">Tortugas Padel</string>
+
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="loginDescription" type="id" />
+    <item name="circleImageView" type="id" />
+    <item name="usernameEditText" type="id" />
+    <item name="passwordEditText" type="id" />
+    <item name="signInButton" type="id" />
+    <item name="signUpLayout" type="id" />
+    <item name="dontHaveAccountTextView" type="id" />
+    <item name="signUpTextView" type="id" />
+    <item name="confirmPasswordEditText" type="id" />
+</resources>

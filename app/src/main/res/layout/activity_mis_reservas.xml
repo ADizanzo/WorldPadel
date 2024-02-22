@@ -20,7 +20,9 @@
         android:layout_height="match_parent"
         android:layout_below="@id/backIcon"
         android:layout_marginTop="32dp"
-        android:layout_above="@id/bottomNavigationBar" />
+        android:layout_above="@id/bottomNavigationBar" >
+
+    </ListView>
 
     <!-- Barra de navegación inferior -->
     <LinearLayout

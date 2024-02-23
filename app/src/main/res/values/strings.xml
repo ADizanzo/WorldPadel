@@ -23,14 +23,31 @@
     <!-- Iconos -->
     <string name="home">Inicio</string>
     <string name="mis_reservas">Mis Reservas</string>
+    <string name="torneo">Torneo</string>
     <string name="usuario">Usuario</string>
     <string name="back_icon" />
     <string name="reservar_ahora">RESERVAR AHORA</string>
     <string name="icon_menu">icon_menu</string>
+    <string name="add_icon" />
+
 
     <!-- Textos -->
     <string name="tortugas_padel">Tortugas Padel</string>
     <string name="dar_de_baja">Dar de Baja</string>
+    <string name="editar_turno">Editar turno</string>
+    <string name="guardar">Guardar</string>
+    <string name="torneo_cordoba">Córdoba Pádel Cup</string>
+    <string name="torneo_bsas">Buenos Aires Pádel Championship</string>
+    <string name="torneo_mendoza">Mendoza Pádel Challenge</string>
+    <string name="torneo_rosario">Pádel Rosario Open</string>
+    <string name="rosario_description">Torneo de Pádel Rosario Open: Disfruta del pádel en su máxima expresión en el Rosario Open. Este torneo anual reúne a jugadores de todas las edades y niveles en emocionantes enfrentamientos. Con categorías individuales y por parejas, se lleva a cabo en los meses de primavera, ofreciendo competencia y diversión en las modernas instalaciones de la ciudad.</string>
+    <string name="bsas_description">Buenos Aires Pádel Championship: En el corazón de Buenos Aires, este campeonato es la cita anual para los amantes del pádel. Con partidos de alta intensidad y una atmósfera vibrante, el torneo atrae a jugadores de todo el país. Se celebra durante los meses de verano en reconocidas pistas de la capital, garantizando emoción y excelencia deportiva.</string>
+    <string name="mza_description">Mendoza Pádel Challenge: Descubre la emoción del pádel en Mendoza, donde el Challenge atrae a jugadores de todos los rincones de la provincia. Con su paisaje montañoso como telón de fondo, este torneo anual ofrece competencia de primer nivel y momentos inolvidables. Se lleva a cabo en los meses de otoño, brindando un ambiente acogedor y competitivo.</string>
+    <string name="cba_description">Córdoba Pádel Cup: La ciudad de Córdoba es el escenario perfecto para la Pádel Cup, un torneo que combina la pasión por el deporte con la belleza natural de la región. Durante los meses de invierno, jugadores de todas las edades se reúnen para disfrutar de partidos emocionantes y una atmósfera festiva.</string>
+
+    <string name="rosario" />
+    <string name="torneoImage" />
+
 
 
 </resources>

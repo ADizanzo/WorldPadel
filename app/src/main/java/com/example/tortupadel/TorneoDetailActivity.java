@@ -3,32 +3,41 @@ package com.example.tortupadel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class TorneoDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_torneo_detail);
 
 
+        // Obtén los datos del Intent
+        Intent intent = getIntent();
+        String torneoTitle = intent.getStringExtra("torneoTitle");
+        int torneoImage = intent.getIntExtra("torneoImage", 0); // 0 es el valor predeterminado si no se encuentra la clave
+        String torneoDescription = intent.getStringExtra("torneoDescription");
 
-        // Obtén la referencia al ImageView del botón RESERVAR AHORA
-        Button reservaButton = findViewById(R.id.buttonReservar);
+        // Mostrar los datos en los elementos de la interfaz de usuario
+        ImageView torneoImageView = findViewById(R.id.torneoImage);
+        torneoImageView.setImageResource(torneoImage);
 
-        // Establece un OnClickListener para el botón RESERVAR AHORA
-        reservaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Cuando se hace clic en el botón RESERVAR AHORA, inicia ReservasActivity
-                Intent intent = new Intent(HomeActivity.this, ReservasActivity.class);
-                startActivity(intent);
-            }
-        });
+        TextView torneoTitleTextView = findViewById(R.id.torneoTitle);
+        torneoTitleTextView.setText(torneoTitle);
+
+        TextView torneoDescriptionTextView = findViewById(R.id.torneoDescription);
+        torneoDescriptionTextView.setText(torneoDescription);
+
+
+        // Obtén la referencia al ImageView del icono de retroceso
+        ImageView backIconImageView = findViewById(R.id.backIcon);
+        // Establece un OnClickListener para el icono de retroceso
+        backIconImageView.setOnClickListener(v -> finish());
+
 
 
         // Obtén la referencia al ImageView del icono home
@@ -39,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Cuando se hace clic en el icono home, inicia la HomeActivity
-                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                Intent intent = new Intent(TorneoDetailActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Cuando se hace clic en el icono reservas, inicia MisReservasActivity
-                Intent intent = new Intent(HomeActivity.this, MisReservasActivity.class);
+                Intent intent = new Intent(TorneoDetailActivity.this, MisReservasActivity.class);
                 startActivity(intent);
             }
         });
@@ -66,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
         torneoIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, TorneosActivity.class);
+                Intent intent = new Intent(TorneoDetailActivity.this, TorneosActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,15 +89,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Cuando se hace clic en el icono usuarios, inicia la UserActivity
-                Intent intent = new Intent(HomeActivity.this, UserActivity.class);
+                Intent intent = new Intent(TorneoDetailActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
 
 
-
-
-
     }
+
+
+
 
 }

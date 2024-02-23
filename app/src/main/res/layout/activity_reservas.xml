@@ -20,7 +20,8 @@
     <CalendarView
         android:id="@+id/calenderView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
 
     <!-- ListView para mostrar los turnos disponibles -->
     <ListView
@@ -57,8 +58,16 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
+        <!-- Icono 3 (Torneos) -->
+        <ImageView
+            android:id="@+id/torneo"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/torneo"
+            android:contentDescription="@string/torneo"/>
 
-        <!-- Icono 3 (Usuario) -->
+        <!-- Icono 4 (Usuario) -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"
@@ -66,6 +75,7 @@
             android:layout_weight="1"
             android:src="@drawable/usuario"
             android:contentDescription="@string/usuario"/>
+
     </LinearLayout>
 
 </LinearLayout>

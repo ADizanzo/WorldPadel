@@ -59,6 +59,18 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        // Obtén la referencia al ImageView del icono torneos
+        ImageView torneoIconImage = findViewById(R.id.torneo);
+
+        // Establece un OnClickListener para el icono torneos
+        torneoIconImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, TorneosActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Obtén la referencia al ImageView del icono usuarios
         ImageView userIconImage = findViewById(R.id.user);
 

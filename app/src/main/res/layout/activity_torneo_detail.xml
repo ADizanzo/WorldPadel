@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity">
+    tools:context=".TorneoDetailActivity">
 
 
     <!-- Icono Back -->
@@ -20,6 +20,52 @@
         android:layout_marginTop="16dp"/>
 
 
+    <!-- Título Torneo -->
+    <TextView
+        android:id="@+id/torneoTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/backIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="35dp"/>
+
+    <!-- Imagen Torneo -->
+    <ImageView
+        android:id="@+id/torneoImage"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/torneoImage"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/torneoTitle"
+        tools:ignore="ImageContrastCheck"/>
+
+    <!-- Descripción Torneo -->
+    <TextView
+        android:id="@+id/torneoDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="#555555"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/torneoTitle"
+        tools:ignore="VisualLintLongText" />
 
 
     <!-- Barra de navegación inferior -->

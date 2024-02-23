@@ -22,8 +22,8 @@
     <!-- Icono "Modificar" -->
     <ImageView
         android:id="@+id/modificarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
@@ -34,8 +34,8 @@
     <!-- Icono "Eliminar" -->
     <ImageView
         android:id="@+id/darDeBajaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"

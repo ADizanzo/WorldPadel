@@ -45,6 +45,7 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
+
         // Obtén la referencia al ImageView del icono home
         ImageView homeIconImageView = findViewById(R.id.home);
 
@@ -58,11 +59,12 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
+
         // Obtén la referencia al ImageView del icono Mis Reservas
-        ImageView reservasIconImage = findViewById(R.id.mis_reservas);
+        ImageView misReservasIconImage = findViewById(R.id.mis_reservas);
 
         // Establece un OnClickListener para el icono reservas
-        reservasIconImage.setOnClickListener(new View.OnClickListener() {
+        misReservasIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Cuando se hace clic en el icono reservas, inicia MisReservasActivity
@@ -70,6 +72,20 @@ public class ReservasActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        // Obtén la referencia al ImageView del icono torneos
+        ImageView torneoIconImage = findViewById(R.id.torneo);
+
+        // Establece un OnClickListener para el icono torneos
+        torneoIconImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReservasActivity.this, TorneosActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Obtén la referencia al ImageView del icono usuarios
         ImageView userIconImage = findViewById(R.id.user);
@@ -84,6 +100,7 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
+
         calendarView = findViewById(R.id.calenderView);
         calendar = Calendar.getInstance();
 
@@ -91,6 +108,8 @@ public class ReservasActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listView.setAdapter(adapter);
+
+
 
         // Establece un listener para cuando se seleccione una fecha en el calendario
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -103,12 +122,14 @@ public class ReservasActivity extends AppCompatActivity {
 
         // Inicializa la lista de turnos disponibles y reservados
         turnosDisponibles = new ArrayList<>();
+        turnosDisponibles.add("Turno 15:30hs");
         turnosDisponibles.add("Turno 17:00hs");
         turnosDisponibles.add("Turno 18:30hs");
         turnosDisponibles.add("Turno 20:00hs");
         turnosDisponibles.add("Turno 21:30hs");
 
         turnosReservados = new ArrayList<>();
+
 
         // Establece un listener para cuando se hace clic en un turno disponible
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

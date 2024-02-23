@@ -24,6 +24,18 @@
 
     </ListView>
 
+    <!-- Icono Añadir -->
+    <ImageView
+        android:id="@+id/addIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add_icon"
+        android:contentDescription="@string/add_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="80dp" />
+
     <!-- Barra de navegación inferior -->
     <LinearLayout
         android:id="@+id/bottomNavigationBar"
@@ -52,7 +64,16 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
-        <!-- Icono 3 (Usuario) -->
+        <!-- Icono 3 (Torneos) -->
+        <ImageView
+            android:id="@+id/torneo"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/torneo"
+            android:contentDescription="@string/torneo"/>
+
+        <!-- Icono 4 (Usuario) -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"

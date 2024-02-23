@@ -47,7 +47,14 @@
 
     <string name="rosario" />
     <string name="torneoImage" />
-
+    <string name="profile_image" />
+    <string name="nombre_de_usuario">Augusto Dizanzo</string>
+    <string name="categoria">Categoría</string>
+    <string name="genero">Género</string>
+    <string name="edad">Edad</string>
+    <string name="disponibilidad">Disponibilidad</string>
+    <string name="localidad">Localidad</string>
+    <string name="contacto">Contacto</string>
 
 
 </resources>

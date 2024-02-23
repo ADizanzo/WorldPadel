@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".UserActivity">
 
-
     <!-- Icono Back -->
     <ImageView
         android:id="@+id/backIcon"
@@ -19,8 +18,112 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"/>
 
+    <!-- Texto del nombre del usuario -->
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_de_usuario"
+        android:textSize="22sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/backIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
 
+    <!-- Imagen de perfil del usuario -->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/perfil"
+        android:contentDescription="@string/profile_image"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/userNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
+    <!-- Contenedor de campos de entrada de información del usuario -->
+    <LinearLayout
+        android:id="@+id/userInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/profileImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <!-- Título de Categoría -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/categoria"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Campo de entrada para Categoría -->
+        <EditText
+            android:id="@+id/categoriaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/categoria"/>
+
+        <!-- Título de Disponibilidad -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/disponibilidad"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Campo de entrada para Disponibilidad -->
+        <EditText
+            android:id="@+id/disponibilidadEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/disponibilidad"
+            android:focusable="false"
+            android:clickable="true"/>
+
+        <!-- Título de Localidad -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/localidad"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Campo de entrada para Localidad -->
+        <EditText
+            android:id="@+id/localidadEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/localidad"/>
+
+        <!-- Título de Contacto -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contacto"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Campo de entrada para Contacto -->
+        <EditText
+            android:id="@+id/contactoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/contacto"/>
+
+    </LinearLayout>
 
     <!-- Barra de navegación inferior -->
     <LinearLayout

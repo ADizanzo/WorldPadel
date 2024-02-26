@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -45,7 +44,6 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
-
         // Obtén la referencia al ImageView del icono home
         ImageView homeIconImageView = findViewById(R.id.home);
 
@@ -58,7 +56,6 @@ public class ReservasActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         // Obtén la referencia al ImageView del icono Mis Reservas
         ImageView misReservasIconImage = findViewById(R.id.mis_reservas);
@@ -73,7 +70,6 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
-
         // Obtén la referencia al ImageView del icono torneos
         ImageView torneoIconImage = findViewById(R.id.torneo);
 
@@ -85,7 +81,6 @@ public class ReservasActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         // Obtén la referencia al ImageView del icono usuarios
         ImageView userIconImage = findViewById(R.id.user);
@@ -100,7 +95,6 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
-
         calendarView = findViewById(R.id.calenderView);
         calendar = Calendar.getInstance();
 
@@ -109,14 +103,12 @@ public class ReservasActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listView.setAdapter(adapter);
 
-
-
         // Establece un listener para cuando se seleccione una fecha en el calendario
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int dayOfMonth, int month, int year ) {
                 // Mostrar los turnos disponibles para la fecha seleccionada
-                mostrarTurnosDisponibles(year, month, dayOfMonth);
+                mostrarTurnosDisponibles(dayOfMonth, month, year);
             }
         });
 
@@ -129,7 +121,6 @@ public class ReservasActivity extends AppCompatActivity {
         turnosDisponibles.add("Turno 21:30hs");
 
         turnosReservados = new ArrayList<>();
-
 
         // Establece un listener para cuando se hace clic en un turno disponible
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -145,13 +136,13 @@ public class ReservasActivity extends AppCompatActivity {
         turnosReservados = turnosManager.getTurnosReservados();
     }
 
-    private void mostrarTurnosDisponibles(int year, int month, int dayOfMonth) {
+    private void mostrarTurnosDisponibles(int dayOfMonth, int month, int year) {
         // Obtener la fecha actual
         Calendar fechaActual = Calendar.getInstance();
 
         // Crear un objeto Calendar para la fecha seleccionada
         Calendar fechaSeleccionada = Calendar.getInstance();
-        fechaSeleccionada.set(year, month, dayOfMonth);
+        fechaSeleccionada.set(dayOfMonth, month, year);
 
         // Verificar si la fecha seleccionada es igual o posterior a la fecha actual
         if (fechaSeleccionada.compareTo(fechaActual) >= 0) {
@@ -170,7 +161,6 @@ public class ReservasActivity extends AppCompatActivity {
         }
     }
 
-
     private void mostrarDialogoReservaTurno(final String turno) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("¿Reservar ahora?")
@@ -188,14 +178,9 @@ public class ReservasActivity extends AppCompatActivity {
 
                         // Agregar el turno a la base de datos
                         TurnoReservadoDataSource dataSource = new TurnoReservadoDataSource(ReservasActivity.this);
-                        try {
-                            dataSource.open();
-                            dataSource.agregarTurnoReservado(turnoReservado);
-                            dataSource.close();
-                        } catch (SQLException e) {
-                            // Manejar la excepción
-                            e.printStackTrace();
-                        }
+                        dataSource.open();
+                        dataSource.agregarTurnoReservado(turnoReservado);
+                        dataSource.close();
 
                         // Eliminar el turno de la lista de turnos disponibles
                         turnosDisponibles.remove(turno);
@@ -213,7 +198,6 @@ public class ReservasActivity extends AppCompatActivity {
                 })
                 .show();
     }
-
 
     // Método para obtener la fecha seleccionada en el calendario
     private String obtenerFechaSeleccionada() {

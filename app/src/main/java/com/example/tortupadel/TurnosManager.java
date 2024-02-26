@@ -39,10 +39,11 @@ public class TurnosManager {
         // Suponiendo que los turnos disponibles son para hoy
         // Puedes ajustar esta lógica según tus necesidades específicas
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String fechaActual = dateFormat.format(calendar.getTime());
 
         // Ejemplo de turnos disponibles
+        turnosDisponibles.add("Turno 15:30hs - " + fechaActual);
         turnosDisponibles.add("Turno 17:00hs - " + fechaActual);
         turnosDisponibles.add("Turno 18:30hs - " + fechaActual);
         turnosDisponibles.add("Turno 20:00hs - " + fechaActual);

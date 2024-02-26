@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class MisReservasActivity extends AppCompatActivity {
@@ -79,7 +78,6 @@ public class MisReservasActivity extends AppCompatActivity {
             }
         });
 
-
         // Obtén la referencia al ImageView del icono Mis Reservas
         ImageView misReservasIconImage = findViewById(R.id.mis_reservas);
 
@@ -93,7 +91,6 @@ public class MisReservasActivity extends AppCompatActivity {
             }
         });
 
-
         // Obtén la referencia al ImageView del icono torneos
         ImageView torneoIconImage = findViewById(R.id.torneo);
 
@@ -105,7 +102,6 @@ public class MisReservasActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         // Obtén la referencia al ImageView del icono usuarios
         ImageView userIconImage = findViewById(R.id.user);
@@ -125,36 +121,24 @@ public class MisReservasActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == EDITAR_TURNO_REQUEST && resultCode == RESULT_OK) {
-            // Obtener la posición del turno modificado
             int position = data.getIntExtra("posicion", -1);
             if (position != -1) {
-                // Actualizar la lista de turnos reservados con el nuevo turno
                 String nuevoTurno = data.getStringExtra("nuevoTurno");
                 turnosReservados.set(position, nuevoTurno);
-                // Notificar al adaptador que los datos han cambiado
                 adapter.notifyDataSetChanged();
             }
         }
     }
 
-    public void eliminarTurno(int position) {
-        // Eliminar el turno de la base de datos
+    private void eliminarTurno(int position) {
         TurnoReservadoDataSource dataSource = new TurnoReservadoDataSource(MisReservasActivity.this);
-        try {
-            dataSource.open();
-            dataSource.eliminarTurnoReservado(adapter.getItem(position));
-            dataSource.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Manejar la excepción
-        }
-
-        // Eliminar el turno de la lista
+        dataSource.open();
+        // Eliminar el turno de la base de datos
+        dataSource.eliminarTurnoReservado(adapter.getItem(position));
+        dataSource.close();
+        // Eliminar el turno de la lista en la interfaz de usuario
         turnosReservados.remove(position);
-
-        // Notificar al adaptador que los datos han cambiado
         adapter.notifyDataSetChanged();
-
         Toast.makeText(this, "Turno dado de baja", Toast.LENGTH_SHORT).show();
     }
 }

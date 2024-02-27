@@ -9,4 +9,5 @@
     <item name="dontHaveAccountTextView" type="id" />
     <item name="signUpTextView" type="id" />
     <item name="confirmPasswordEditText" type="id" />
+    <item name="fechaTextView" type="id" />
 </resources>

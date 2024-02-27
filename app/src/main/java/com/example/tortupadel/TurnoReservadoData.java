@@ -1,5 +1,6 @@
 package com.example.tortupadel;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,12 +10,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurnoReservadoDataSource {
+public class TurnoReservadoData {
 
     private SQLiteDatabase database;
     private TurnosDatabaseHelper dbHelper;
 
-    public TurnoReservadoDataSource(Context context) {
+    public TurnoReservadoData(Context context) {
         dbHelper = new TurnosDatabaseHelper(context);
     }
 
@@ -53,7 +54,7 @@ public class TurnoReservadoDataSource {
         );
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            String turno = cursor.getString(cursor.getColumnIndex(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO));
+            @SuppressLint("Range") String turno = cursor.getString(cursor.getColumnIndex(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO));
             turnosReservados.add(turno);
             cursor.moveToNext();
         }
@@ -70,12 +71,21 @@ public class TurnoReservadoDataSource {
     }
 
     // Método para actualizar un turno reservado existente
-    public void actualizarTurnoReservado(int id, String nuevoTurno) {
+    public void actualizarTurnoReservado(String turnoExistente, String nuevoTurno) {
         ContentValues values = new ContentValues();
         values.put(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO, nuevoTurno);
-        database.update(TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME,
+
+        // Actualizar el turno en la base de datos
+        database.update(
+                TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME,
                 values,
-                TurnoReservadoContract.TurnoReservadoEntry._ID + " = ?",
-                new String[]{String.valueOf(id)});
+                TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " = ?",
+                new String[]{turnoExistente}
+        );
     }
+
+
+
+
+
 }

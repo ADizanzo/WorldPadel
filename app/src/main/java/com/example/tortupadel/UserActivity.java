@@ -127,6 +127,7 @@ public class UserActivity extends AppCompatActivity {
         builder.show();
     }
 
+
     // Método para mostrar el cuadro de diálogo de categoría
     private void showCategoriaDialog() {
         final String[] opcionesCategoria = {"8va", "7ma", "6ta", "5ta", "4ta", "3ra", "2da", "1ra"};

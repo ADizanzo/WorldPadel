@@ -62,22 +62,34 @@ public class EditarTurnoActivity extends AppCompatActivity {
         dialog.show();
     }
 
+
     private void guardarCambios() {
         // Obtener el nuevo turno editado
         String nuevoTurno = editTextTurno.getText().toString();
 
         // Si el nuevo turno no está vacío, enviarlo de vuelta a la actividad anterior
         if (!nuevoTurno.isEmpty()) {
+            // Obtener el turno existente que se está editando
+            String turnoExistente = getIntent().getStringExtra("turno");
+
             // Crear un nuevo intent para enviar los datos de vuelta
             Intent resultadoIntent = new Intent();
             resultadoIntent.putExtra("nuevoTurno", nuevoTurno);
             resultadoIntent.putExtra("posicion", getIntent().getIntExtra("posicion", -1));
             setResult(RESULT_OK, resultadoIntent);
+
+            // Llamar al método actualizarTurnoReservado para actualizar el turno en la base de datos
+            TurnoReservadoData dataSource = new TurnoReservadoData(EditarTurnoActivity.this);
+            dataSource.open();
+            dataSource.actualizarTurnoReservado(turnoExistente, nuevoTurno);
+            dataSource.close();
+
             finish();
         } else {
             // Mostrar un mensaje de error si el campo está vacío
             editTextTurno.setError("Debe ingresar un turno");
         }
     }
+
 
 }

@@ -24,6 +24,9 @@ public class MisReservasActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listViewMisReservas);
 
+        // Obtener la fecha seleccionada del Intent
+        String fechaSeleccionada = getIntent().getStringExtra("fechaSeleccionada");
+
         // Obtener la lista de turnos reservados
         TurnosManager turnosManager = TurnosManager.getInstance();
         turnosReservados = turnosManager.getTurnosReservados();
@@ -124,6 +127,15 @@ public class MisReservasActivity extends AppCompatActivity {
             int position = data.getIntExtra("posicion", -1);
             if (position != -1) {
                 String nuevoTurno = data.getStringExtra("nuevoTurno");
+                String turnoExistente = turnosReservados.get(position);
+
+                // Actualizar el turno en la base de datos
+                TurnoReservadoData dataSource = new TurnoReservadoData(MisReservasActivity.this);
+                dataSource.open();
+                dataSource.actualizarTurnoReservado(turnoExistente, nuevoTurno);
+                dataSource.close();
+
+                // Actualizar la lista en la interfaz de usuario
                 turnosReservados.set(position, nuevoTurno);
                 adapter.notifyDataSetChanged();
             }
@@ -131,7 +143,7 @@ public class MisReservasActivity extends AppCompatActivity {
     }
 
     private void eliminarTurno(int position) {
-        TurnoReservadoDataSource dataSource = new TurnoReservadoDataSource(MisReservasActivity.this);
+        TurnoReservadoData dataSource = new TurnoReservadoData(MisReservasActivity.this);
         dataSource.open();
         // Eliminar el turno de la base de datos
         dataSource.eliminarTurnoReservado(adapter.getItem(position));

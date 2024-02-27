@@ -55,6 +55,7 @@
     <string name="disponibilidad">Disponibilidad</string>
     <string name="localidad">Localidad</string>
     <string name="contacto">Contacto</string>
+    <string name="torneo_title">Torneos</string>
 
 
 </resources>

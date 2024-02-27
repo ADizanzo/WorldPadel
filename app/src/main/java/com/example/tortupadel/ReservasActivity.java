@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class ReservasActivity extends AppCompatActivity {
     CalendarView calendarView;
@@ -126,7 +127,7 @@ public class ReservasActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mostrarDialogoReservaTurno(adapter.getItem(position));
+                mostrarDialogoReservaTurno(adapter.getItem(position), obtenerFechaSeleccionada());
             }
         });
 
@@ -161,23 +162,23 @@ public class ReservasActivity extends AppCompatActivity {
         }
     }
 
-    private void mostrarDialogoReservaTurno(final String turno) {
+    private void mostrarDialogoReservaTurno(final String turno, final String fechaSeleccionada) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("¿Reservar ahora?")
-                .setMessage("¿Desea reservar \"" + turno + "\"?")
+                .setMessage("¿Desea reservar \"" + turno + "\" para el " + fechaSeleccionada + "?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Mostrar mensaje de reserva exitosa
                         Toast.makeText(ReservasActivity.this, "Turno Reservado", Toast.LENGTH_SHORT).show();
 
-                        // Agregar el turno a la lista de turnos reservados
-                        String turnoReservado = turno + " - " + obtenerFechaSeleccionada();
+                        // Agregar el turno y la fecha a la lista de turnos reservados
+                        String turnoReservado = turno + " - " + fechaSeleccionada;
                         TurnosManager turnosManager = TurnosManager.getInstance();
                         turnosManager.agregarTurnoReservado(turnoReservado);
 
                         // Agregar el turno a la base de datos
-                        TurnoReservadoDataSource dataSource = new TurnoReservadoDataSource(ReservasActivity.this);
+                        TurnoReservadoData dataSource = new TurnoReservadoData(ReservasActivity.this);
                         dataSource.open();
                         dataSource.agregarTurnoReservado(turnoReservado);
                         dataSource.close();
@@ -199,14 +200,22 @@ public class ReservasActivity extends AppCompatActivity {
                 .show();
     }
 
+
     // Método para obtener la fecha seleccionada en el calendario
     private String obtenerFechaSeleccionada() {
+        // Obtener la fecha seleccionada del CalendarView
         long selectedDateMillis = calendarView.getDate();
         Calendar selectedDateCalendar = Calendar.getInstance();
         selectedDateCalendar.setTimeInMillis(selectedDateMillis);
+
+        // Obtener el año, mes y día del mes de la fecha seleccionada
         int year = selectedDateCalendar.get(Calendar.YEAR);
-        int month = selectedDateCalendar.get(Calendar.MONTH);
+        int month = selectedDateCalendar.get(Calendar.MONTH) + 1; // Sumar 1 al mes (enero es 0)
         int dayOfMonth = selectedDateCalendar.get(Calendar.DAY_OF_MONTH);
-        return year + "-" + (month + 1) + "-" + dayOfMonth;
+
+        // Formatear la fecha seleccionada en el formato deseado
+        return String.format(Locale.getDefault(), "%02d-%02d-%04d", dayOfMonth, month, year);
     }
+
+
 }

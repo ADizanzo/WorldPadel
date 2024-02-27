@@ -12,4 +12,6 @@ public class TurnoReservadoContract {
         public static final String TABLE_NAME = "turnos_reservados";
         public static final String COLUMN_TURNO = "turno";
     }
+
+
 }

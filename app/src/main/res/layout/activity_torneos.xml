@@ -19,6 +19,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"/>
 
+    <!-- Título Torneos
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/torneo_title"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toEndOf="@id/backIcon"
+        app:layout_constraintTop_toTopOf="@id/backIcon" /> -->
+
 
     <!-- Tarjeta 1 -->
     <androidx.cardview.widget.CardView

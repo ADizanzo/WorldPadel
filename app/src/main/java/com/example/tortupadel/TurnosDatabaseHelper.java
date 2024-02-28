@@ -13,7 +13,8 @@ public class TurnosDatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_TURNOS_RESERVADOS =
             "CREATE TABLE " + TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME + " (" +
                     TurnoReservadoContract.TurnoReservadoEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " TEXT);";
+                    TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " TEXT," +
+                    TurnoReservadoContract.TurnoReservadoEntry.COLUMN_FECHA + " TEXT);";
 
     public TurnosDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,4 +30,6 @@ public class TurnosDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Manejar la actualización de la base de datos si es necesario
     }
+
+
 }

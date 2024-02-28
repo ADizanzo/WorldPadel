@@ -29,9 +29,6 @@ public class TurnosManager {
         turnosReservados.add(turno);
     }
 
-    public void eliminarTurnoReservado(String turno) {
-        turnosReservados.remove(turno);
-    }
 
     // Método para obtener los turnos disponibles del día actual
     public List<String> getTurnosDisponiblesDelDia() {

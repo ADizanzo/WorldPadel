@@ -32,7 +32,7 @@
 
 
     <!-- Textos -->
-    <string name="tortugas_padel">Tortugas Padel</string>
+    <string name="world_padel">World Padel</string>
     <string name="dar_de_baja">Dar de Baja</string>
     <string name="editar_turno">Editar turno</string>
     <string name="guardar">Guardar</string>
@@ -47,6 +47,8 @@
 
     <string name="rosario" />
     <string name="torneoImage" />
+
+    <!-- Perfil -->
     <string name="profile_image" />
     <string name="nombre_de_usuario">Augusto Dizanzo</string>
     <string name="categoria">Categoría</string>

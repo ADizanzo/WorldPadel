@@ -107,10 +107,14 @@ public class ReservasActivity extends AppCompatActivity {
         // Establece un listener para cuando se seleccione una fecha en el calendario
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int dayOfMonth, int month, int year ) {
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int dayOfMonth, int month, int year) {
+                // Actualizar el objeto calendar con la fecha seleccionada
+                calendar.set(dayOfMonth, month, year);
+
                 // Mostrar los turnos disponibles para la fecha seleccionada
                 mostrarTurnosDisponibles(dayOfMonth, month, year);
             }
+
         });
 
         // Inicializa la lista de turnos disponibles y reservados
@@ -127,6 +131,7 @@ public class ReservasActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String fechaSeleccionada = obtenerFechaSeleccionada();
                 mostrarDialogoReservaTurno(adapter.getItem(position), obtenerFechaSeleccionada());
             }
         });
@@ -163,59 +168,90 @@ public class ReservasActivity extends AppCompatActivity {
     }
 
     private void mostrarDialogoReservaTurno(final String turno, final String fechaSeleccionada) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("¿Reservar ahora?")
-                .setMessage("¿Desea reservar \"" + turno + "\" para el " + fechaSeleccionada + "?")
-                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Mostrar mensaje de reserva exitosa
-                        Toast.makeText(ReservasActivity.this, "Turno Reservado", Toast.LENGTH_SHORT).show();
+        // Verificar si el turno está reservado para la fecha seleccionada
+        if (turnosReservados.contains(turno + " - " + fechaSeleccionada)) {
+            // Si el turno ya está reservado, mostrar un mensaje
+            Toast.makeText(this, "Este turno ya está reservado para este día.", Toast.LENGTH_SHORT).show();
+        } else {
+            // Si el turno no está reservado, permitir la reserva
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("¿Reservar ahora?")
+                    .setMessage("¿Desea reservar \"" + turno + "\" para el " + fechaSeleccionada + "?")
+                    .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Mostrar mensaje de reserva exitosa
+                            Toast.makeText(ReservasActivity.this, "Turno Reservado", Toast.LENGTH_SHORT).show();
 
-                        // Agregar el turno y la fecha a la lista de turnos reservados
-                        String turnoReservado = turno + " - " + fechaSeleccionada;
-                        TurnosManager turnosManager = TurnosManager.getInstance();
-                        turnosManager.agregarTurnoReservado(turnoReservado);
+                            // Agregar el turno y la fecha a la lista de turnos reservados
+                            String turnoReservado = turno + " - " + fechaSeleccionada;
+                            TurnosManager turnosManager = TurnosManager.getInstance();
+                            turnosManager.agregarTurnoReservado(turnoReservado);
 
-                        // Agregar el turno a la base de datos
-                        TurnoReservadoData dataSource = new TurnoReservadoData(ReservasActivity.this);
-                        dataSource.open();
-                        dataSource.agregarTurnoReservado(turnoReservado);
-                        dataSource.close();
+                            // Agregar el turno a la base de datos
+                            TurnoReservadoData dataSource = new TurnoReservadoData(ReservasActivity.this);
+                            dataSource.open();
+                            dataSource.agregarTurnoReservado(turnoReservado);
+                            dataSource.close();
 
-                        // Eliminar el turno de la lista de turnos disponibles
-                        turnosDisponibles.remove(turno);
+                            // Eliminar el turno de la lista de turnos disponibles
+                            turnosDisponibles.remove(turno);
 
-                        // Actualizar la lista de turnos disponibles en el ListView
-                        adapter.remove(turno);
-                        adapter.notifyDataSetChanged();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // No hacer nada
-                    }
-                })
-                .show();
+                            // Actualizar la lista de turnos disponibles en el ListView
+                            adapter.remove(turno);
+                            adapter.notifyDataSetChanged();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // No hacer nada
+                        }
+                    })
+                    .show();
+        }
     }
+
+
+    @NonNull
+    private List<String> obtenerTodosLosTurnosReservados(String fechaSeleccionada) {
+        // Lista para almacenar los turnos reservados para la fecha seleccionada
+        List<String> turnosReservados = new ArrayList<>();
+
+        // Crear una instancia de la clase TurnoReservadoData para acceder a la base de datos
+        TurnoReservadoData dataSource = new TurnoReservadoData(this);
+        dataSource.open();
+
+        // Obtener todos los turnos reservados de la base de datos para la fecha seleccionada
+        List<String> turnosReservadosDB = dataSource.obtenerTodosLosTurnosReservados();
+
+        // Cerrar la conexión con la base de datos
+        dataSource.close();
+
+        // Filtrar los turnos reservados para la fecha seleccionada
+        for (String turnoReservado : turnosReservadosDB) {
+            // Comprobar si el turno reservado contiene la fecha seleccionada
+            if (turnoReservado.contains(fechaSeleccionada)) {
+                turnosReservados.add(turnoReservado);
+            }
+        }
+
+        return turnosReservados;
+    }
+
 
 
     // Método para obtener la fecha seleccionada en el calendario
     private String obtenerFechaSeleccionada() {
-        // Obtener la fecha seleccionada del CalendarView
-        long selectedDateMillis = calendarView.getDate();
-        Calendar selectedDateCalendar = Calendar.getInstance();
-        selectedDateCalendar.setTimeInMillis(selectedDateMillis);
-
-        // Obtener el año, mes y día del mes de la fecha seleccionada
-        int year = selectedDateCalendar.get(Calendar.YEAR);
-        int month = selectedDateCalendar.get(Calendar.MONTH) + 1; // Sumar 1 al mes (enero es 0)
-        int dayOfMonth = selectedDateCalendar.get(Calendar.DAY_OF_MONTH);
+        // Obtener el año, mes y día del mes de la fecha seleccionada del objeto calendar
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1; // Sumar 1 al mes (enero es 0)
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
         // Formatear la fecha seleccionada en el formato deseado
         return String.format(Locale.getDefault(), "%02d-%02d-%04d", dayOfMonth, month, year);
     }
+
 
 
 }

@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:fontFamily="@font/sonsie_one"
-        android:text="@string/tortugas_padel"
+        android:text="@string/world_padel"
         android:textColor="#8BC34A"
         android:textSize="28sp"
         android:textStyle="bold"

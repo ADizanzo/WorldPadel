@@ -40,6 +40,20 @@ public class TurnoReservadoData {
                 new String[]{turno});
     }
 
+    public void actualizarTurnoReservado(String turnoExistente, String nuevoTurno) {
+        ContentValues values = new ContentValues();
+        values.put(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO, nuevoTurno);
+
+        // Actualizar el turno en la base de datos
+        database.update(
+                TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME,
+                values,
+                TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " = ?",
+                new String[]{turnoExistente}
+        );
+    }
+
+
     // Método para obtener todos los turnos reservados
     public List<String> obtenerTodosLosTurnosReservados() {
         List<String> turnosReservados = new ArrayList<>();
@@ -61,31 +75,6 @@ public class TurnoReservadoData {
         cursor.close();
         return turnosReservados;
     }
-
-    // Método para obtener los turnos reservados para una fecha específica
-    public List<String> obtenerTurnosReservadosParaFecha(int dayOfMonth, int month, int year) {
-        // Este método se puede implementar de manera similar al obtenerTodosLosTurnosReservados
-        // utilizando una consulta SQL adecuada para obtener los turnos reservados para la fecha dada
-        // Dependiendo de la estructura de tu base de datos, puedes ajustar la consulta.
-        return new ArrayList<>(); // Por ahora, devolvemos una lista vacía
-    }
-
-    // Método para actualizar un turno reservado existente
-    public void actualizarTurnoReservado(String turnoExistente, String nuevoTurno) {
-        ContentValues values = new ContentValues();
-        values.put(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO, nuevoTurno);
-
-        // Actualizar el turno en la base de datos
-        database.update(
-                TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME,
-                values,
-                TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " = ?",
-                new String[]{turnoExistente}
-        );
-    }
-
-
-
 
 
 }

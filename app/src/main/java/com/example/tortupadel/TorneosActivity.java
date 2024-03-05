@@ -14,11 +14,11 @@ public class TorneosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_torneos);
 
+
         // Obtén la referencia al ImageView del icono de retroceso
         ImageView backIconImageView = findViewById(R.id.backIcon);
         // Establece un OnClickListener para el icono de retroceso
         backIconImageView.setOnClickListener(v -> finish());
-
 
 
         // Obtén la referencia al ImageView del icono "Más" en las tarjetas
@@ -36,12 +36,12 @@ public class TorneosActivity extends AppCompatActivity {
                 Intent intent = new Intent(TorneosActivity.this, TorneoDetailActivity.class);
                 // Pasa los datos relevantes a través del Intent
                 intent.putExtra("torneoTitle", getString(R.string.torneo_rosario));
-                intent.putExtra("torneoImage", R.drawable.ros);
+                intent.putExtra("torneoImages", new int[]{R.drawable.ros, R.drawable.ros_image1, R.drawable.ros_image2, R.drawable.ros_image3});
+                intent.putExtra("torneoVideo", R.raw.videoros);
                 intent.putExtra("torneoDescription", getString(R.string.rosario_description));
                 startActivity(intent);
             }
         });
-
 
         // Establece un OnClickListener para el icono "Más" en la tarjeta 2
         addIconImageView2.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,8 @@ public class TorneosActivity extends AppCompatActivity {
                 Intent intent = new Intent(TorneosActivity.this, TorneoDetailActivity.class);
                 // Pasa los datos relevantes a través del Intent
                 intent.putExtra("torneoTitle", getString(R.string.torneo_mendoza));
-                intent.putExtra("torneoImage", R.drawable.mza);
+                intent.putExtra("torneoImages", new int[]{R.drawable.mza, R.drawable.mza_image1, R.drawable.mza_image2, R.drawable.mza_image3});
+                intent.putExtra("torneoVideo", R.raw.videomza);
                 intent.putExtra("torneoDescription", getString(R.string.mza_description));
                 startActivity(intent);
             }
@@ -65,12 +66,12 @@ public class TorneosActivity extends AppCompatActivity {
                 Intent intent = new Intent(TorneosActivity.this, TorneoDetailActivity.class);
                 // Pasa los datos relevantes a través del Intent
                 intent.putExtra("torneoTitle", getString(R.string.torneo_bsas));
-                intent.putExtra("torneoImage", R.drawable.bsas);
+                intent.putExtra("torneoImages", new int[]{R.drawable.bsas, R.drawable.bsas_image1, R.drawable.bsas_image2, R.drawable.bsas_image3});
+                intent.putExtra("torneoVideo", R.raw.videobsas);
                 intent.putExtra("torneoDescription", getString(R.string.bsas_description));
                 startActivity(intent);
             }
         });
-
 
         // Establece un OnClickListener para el icono "Más" en la tarjeta 4
         addIconImageView4.setOnClickListener(new View.OnClickListener() {
@@ -80,13 +81,12 @@ public class TorneosActivity extends AppCompatActivity {
                 Intent intent = new Intent(TorneosActivity.this, TorneoDetailActivity.class);
                 // Pasa los datos relevantes a través del Intent
                 intent.putExtra("torneoTitle", getString(R.string.torneo_cordoba));
-                intent.putExtra("torneoImage", R.drawable.cba);
+                intent.putExtra("torneoImages", new int[]{R.drawable.cba, R.drawable.cba_image1, R.drawable.cba_image2, R.drawable.cba_image3});
+                intent.putExtra("torneoVideo", R.raw.videocba);
                 intent.putExtra("torneoDescription", getString(R.string.cba_description));
                 startActivity(intent);
             }
         });
-
-
 
 
 
@@ -97,7 +97,6 @@ public class TorneosActivity extends AppCompatActivity {
         homeIconImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono home, inicia la HomeActivity
                 Intent intent = new Intent(TorneosActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
@@ -111,7 +110,6 @@ public class TorneosActivity extends AppCompatActivity {
         misReservasIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono reservas, inicia MisReservasActivity
                 Intent intent = new Intent(TorneosActivity.this, MisReservasActivity.class);
                 startActivity(intent);
             }
@@ -124,16 +122,13 @@ public class TorneosActivity extends AppCompatActivity {
         userIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono usuarios, inicia la UserActivity
                 Intent intent = new Intent(TorneosActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
 
+
     }
-
-
-
 
 
 }

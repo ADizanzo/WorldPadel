@@ -27,6 +27,7 @@ public class TurnoReservadoData {
         dbHelper.close();
     }
 
+
     public void agregarTurnoReservado(String turno) {
         ContentValues values = new ContentValues();
         values.put(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO, turno);
@@ -34,7 +35,6 @@ public class TurnoReservadoData {
     }
 
     public void eliminarTurnoReservado(String turno) {
-        // Eliminar el turno de la base de datos
         database.delete(TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME,
                 TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " = ?",
                 new String[]{turno});

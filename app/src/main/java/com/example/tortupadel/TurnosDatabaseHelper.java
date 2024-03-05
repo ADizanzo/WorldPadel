@@ -28,7 +28,7 @@ public class TurnosDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Manejar la actualización de la base de datos si es necesario
+        // Manejar la actualización de la base de datos
     }
 
 

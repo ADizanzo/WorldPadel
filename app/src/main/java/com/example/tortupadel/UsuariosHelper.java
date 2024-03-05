@@ -37,7 +37,7 @@ public class UsuariosHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Aquí puedes manejar las actualizaciones de la base de datos si es necesario
+        // Manejar las actualizaciones de la bbdd
     }
 
     public boolean addUser(String username, String password) {

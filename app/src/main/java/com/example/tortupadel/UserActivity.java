@@ -17,6 +17,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+
         // Obtén la referencia al ImageView del icono de retroceso
         ImageView backIconImageView = findViewById(R.id.backIcon);
 
@@ -24,7 +25,6 @@ public class UserActivity extends AppCompatActivity {
         backIconImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono de retroceso, finaliza la actividad actual
                 finish();
             }
         });
@@ -36,7 +36,6 @@ public class UserActivity extends AppCompatActivity {
         homeIconImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono home, inicia la HomeActivity
                 Intent intent = new Intent(UserActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
@@ -49,7 +48,6 @@ public class UserActivity extends AppCompatActivity {
         misReservasIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono reservas, inicia MisReservasActivity
                 Intent intent = new Intent(UserActivity.this, MisReservasActivity.class);
                 startActivity(intent);
             }
@@ -74,7 +72,6 @@ public class UserActivity extends AppCompatActivity {
         userIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono usuarios, inicia UserActivity
                 Intent intent = new Intent(UserActivity.this, UserActivity.class);
                 startActivity(intent);
             }
@@ -147,9 +144,7 @@ public class UserActivity extends AppCompatActivity {
         });
         builder.show();
 
-
     }
-
 
 
 }

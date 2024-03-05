@@ -15,6 +15,8 @@ public class EditarTurnoActivity extends AppCompatActivity {
     private EditText editTextTurno;
     private Button buttonGuardar;
     private List<String> turnosDisponibles;
+    private String fechaSeleccionada;
+    private static final int EDITAR_TURNO_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +26,20 @@ public class EditarTurnoActivity extends AppCompatActivity {
         editTextTurno = findViewById(R.id.editTextTurno);
         buttonGuardar = findViewById(R.id.buttonGuardar);
 
-        // Obtener el turno a editar del intent
+        // Obtener el turno a editar y la fecha seleccionada del intent
         Intent intent = getIntent();
         String turno = intent.getStringExtra("turno");
+        fechaSeleccionada = intent.getStringExtra("fechaSeleccionada");
 
         // Mostrar el turno en el EditText
         editTextTurno.setText(turno);
 
         // Deshabilitar la edición del EditText
         editTextTurno.setFocusable(false);
-        editTextTurno.setClickable(true); // Permitir que sea clickeable
+        editTextTurno.setClickable(true);
 
-        // Obtener los turnos disponibles del día actual
-        turnosDisponibles = TurnosManager.getInstance().getTurnosDisponiblesDelDia();
+        // Obtener los turnos disponibles para la fecha seleccionada
+        turnosDisponibles = TurnosManager.getInstance().getTurnosDisponiblesDelDia(fechaSeleccionada);
 
         // Configurar el OnClickListener para el EditText para mostrar los turnos disponibles
         editTextTurno.setOnClickListener(v -> mostrarTurnosDisponibles());
@@ -61,7 +64,6 @@ public class EditarTurnoActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 
     private void guardarCambios() {
         // Obtener el nuevo turno editado
@@ -89,6 +91,14 @@ public class EditarTurnoActivity extends AppCompatActivity {
             // Mostrar un mensaje de error si el campo está vacío
             editTextTurno.setError("Debe ingresar un turno");
         }
+    }
+
+    // Añadido código proporcionado
+    private void iniciarEditarTurnoActivity(String turno, String fechaSeleccionada) {
+        Intent intent = new Intent(this, EditarTurnoActivity.class);
+        intent.putExtra("turno", turno);
+        intent.putExtra("fechaSeleccionada", fechaSeleccionada);
+        startActivityForResult(intent, EDITAR_TURNO_REQUEST);
     }
 
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
 
     <!-- Texto del turno -->
     <TextView
@@ -17,7 +19,8 @@
         android:textColor="@android:color/black"
         android:paddingStart="?android:attr/listPreferredItemPaddingStart"
         android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall" />
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        tools:ignore="RelativeOverlap" />
 
     <!-- Icono "Modificar" -->
     <ImageView
@@ -29,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="72dp"
         android:src="@drawable/update"
-        android:contentDescription="Modificar" />
+        android:contentDescription="@string/modificar" />
 
     <!-- Icono "Eliminar" -->
     <ImageView
@@ -41,6 +44,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/delete"
-        android:contentDescription="Eliminar" />
+        android:contentDescription="@string/eliminar" />
+
 
 </RelativeLayout>

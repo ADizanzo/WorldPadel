@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- "Inicia sesión en tu cuenta" -->
+    <!-- "Inicia Sesión" -->
     <TextView
         android:id="@+id/loginDescription"
         android:layout_width="0dp"
@@ -108,8 +108,9 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/sign_up"
-            android:textColor="#748EA9"
+            android:textColor="#959595"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 

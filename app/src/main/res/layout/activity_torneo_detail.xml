@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#353D48"
     tools:context=".TorneoDetailActivity">
 
 
@@ -12,13 +13,13 @@
         android:id="@+id/backIcon"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:src="@drawable/back"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/back_icon"
+        android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"/>
-
+        tools:ignore="ImageContrastCheck" />
 
     <!-- Título Torneo -->
     <TextView
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="28sp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/backIcon"
@@ -51,6 +52,32 @@
         app:layout_constraintTop_toBottomOf="@+id/torneoTitle"
         tools:ignore="ImageContrastCheck"/>
 
+    <!-- Flecha izquierda -->
+    <ImageView
+        android:id="@+id/arrowLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/arrow_left"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="@+id/torneoImage"
+        app:layout_constraintTop_toTopOf="@+id/torneoImage"
+        tools:ignore="ImageContrastCheck" />
+
+    <!-- Flecha derecha -->
+    <ImageView
+        android:id="@+id/arrowRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="@string/arrow_right"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintEnd_toEndOf="@+id/torneoImage"
+        app:layout_constraintTop_toTopOf="@+id/torneoImage"
+        tools:ignore="ImageContrastCheck" />
+
     <!-- Descripción Torneo -->
     <TextView
         android:id="@+id/torneoDescription"
@@ -59,13 +86,42 @@
         android:layout_marginTop="290dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:textColor="#555555"
+        android:textColor="#FFFFFF"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/torneoTitle"
         tools:ignore="VisualLintLongText" />
+
+    <!-- Icono de reproducción de video
+    <ImageView
+        android:id="@+id/videoPlayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_button"
+        android:contentDescription="@string/play_video_icon"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/torneoDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/> -->
+
+    <!-- VideoView para reproducir el video del torneo -->
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/torneoImage"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/torneoTitle"
+        tools:ignore="ImageContrastCheck"/>
 
 
     <!-- Barra de navegación inferior -->
@@ -80,7 +136,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Icono 1 (Home) -->
+        <!-- Icono Home -->
         <ImageView
             android:id="@+id/home"
             android:layout_width="0dp"
@@ -89,7 +145,7 @@
             android:src="@drawable/home"
             android:contentDescription="@string/home"/>
 
-        <!-- Icono 2 (Mis Reservas) -->
+        <!-- Icono Mis Reservas -->
         <ImageView
             android:id="@+id/mis_reservas"
             android:layout_width="0dp"
@@ -98,7 +154,7 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
-        <!-- Icono 3 (Torneos) -->
+        <!-- Icono Torneos -->
         <ImageView
             android:id="@+id/torneo"
             android:layout_width="0dp"
@@ -107,7 +163,7 @@
             android:src="@drawable/torneo"
             android:contentDescription="@string/torneo"/>
 
-        <!-- Icono 4 (Usuario) -->
+        <!-- Icono Usuario -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"

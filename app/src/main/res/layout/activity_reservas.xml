@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"/>
 
-    <!-- ListView para mostrar los turnos disponibles -->
+    <!-- ListView turnos disponibles -->
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:layout_weight="1" />
 
 
-    <!-- Barra de navegación inferior -->
+    <!-- Barra de Navegación -->
     <LinearLayout
         android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         android:background="#000000"
         android:padding="8dp">
 
-        <!-- Icono 1 (Home) -->
+        <!-- Icono Home -->
         <ImageView
             android:id="@+id/home"
             android:layout_width="0dp"
@@ -49,7 +49,7 @@
             android:src="@drawable/home"
             android:contentDescription="@string/home"/>
 
-        <!-- Icono 2 (Mis Reservas) -->
+        <!-- Icono Mis Reservas -->
         <ImageView
             android:id="@+id/mis_reservas"
             android:layout_width="0dp"
@@ -58,7 +58,7 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
-        <!-- Icono 3 (Torneos) -->
+        <!-- Icono Torneos -->
         <ImageView
             android:id="@+id/torneo"
             android:layout_width="0dp"
@@ -67,7 +67,7 @@
             android:src="@drawable/torneo"
             android:contentDescription="@string/torneo"/>
 
-        <!-- Icono 4 (Usuario) -->
+        <!-- Icono Usuario -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"

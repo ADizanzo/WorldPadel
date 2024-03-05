@@ -20,4 +20,6 @@ public class UserManager {
         // Verificar si usuario y contraseña coinciden en la base de datos.
         return dbHelper.checkUserCredentials(username, password);
     }
+
+
 }

@@ -19,7 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
+
+   <!-- <ImageView
         android:id="@+id/toolbarIcon"
         android:layout_width="28dp"
         android:layout_height="28dp"
@@ -29,7 +30,7 @@
         android:src="@drawable/menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck" /> -->
 
 
     <TextView
@@ -39,7 +40,7 @@
         android:layout_marginTop="75dp"
         android:fontFamily="@font/sonsie_one"
         android:text="@string/world_padel"
-        android:textColor="#8BC34A"
+        android:textColor="#00BCD4"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -65,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:backgroundTint="#8BC34A"
+        android:backgroundTint="#00BCD4"
         android:text="@string/reservar_ahora"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +75,7 @@
         tools:ignore="TextContrastCheck" />
 
 
-    <!-- Barra de navegación inferior -->
+    <!-- Barra de Navegación -->
     <LinearLayout
         android:id="@+id/bottomNavigationBar"
         android:layout_width="0dp"
@@ -86,7 +87,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Icono 1 (Home) -->
+        <!-- Icono Home -->
         <ImageView
             android:id="@+id/home"
             android:layout_width="0dp"
@@ -95,7 +96,7 @@
             android:src="@drawable/home"
             android:contentDescription="@string/home"/>
 
-        <!-- Icono 2 (Reservas) -->
+        <!-- Icono Reservas -->
         <ImageView
             android:id="@+id/mis_reservas"
             android:layout_width="0dp"
@@ -104,7 +105,7 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
-        <!-- Icono 3 (Torneos) -->
+        <!-- Icono Torneos -->
         <ImageView
             android:id="@+id/torneo"
             android:layout_width="0dp"
@@ -113,7 +114,7 @@
             android:src="@drawable/torneo"
             android:contentDescription="@string/torneo"/>
 
-        <!-- Icono 4 (Usuario) -->
+        <!-- Icono Usuario -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"

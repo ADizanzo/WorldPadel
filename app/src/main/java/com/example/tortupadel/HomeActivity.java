@@ -16,7 +16,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-
         // Obtén la referencia al ImageView del botón RESERVAR AHORA
         Button reservaButton = findViewById(R.id.buttonReservar);
 
@@ -84,9 +83,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
 
 
     }

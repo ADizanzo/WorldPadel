@@ -15,6 +15,7 @@ public class MisReservasActivity extends AppCompatActivity {
     ListView listView;
     TurnosAdapter adapter;
     List<String> turnosReservados;
+
     private static final int EDITAR_TURNO_REQUEST = 1;
 
     @Override
@@ -32,7 +33,7 @@ public class MisReservasActivity extends AppCompatActivity {
         turnosReservados = turnosManager.getTurnosReservados();
 
         // Inicializar el adaptador con la lista de turnos reservados
-        adapter = new TurnosAdapter(this, turnosReservados);
+        adapter = new TurnosAdapter(this, turnosReservados, turnosReservados);
 
         // Establecer el adaptador en la ListView
         listView.setAdapter(adapter);
@@ -153,4 +154,8 @@ public class MisReservasActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         Toast.makeText(this, "Turno dado de baja", Toast.LENGTH_SHORT).show();
     }
+
+
+
+
 }

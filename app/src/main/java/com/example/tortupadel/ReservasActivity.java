@@ -33,6 +33,7 @@ public class ReservasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservas);
 
+
         // Obtén la referencia al ImageView del icono de retroceso
         ImageView backIconImageView = findViewById(R.id.backIcon);
 
@@ -40,7 +41,6 @@ public class ReservasActivity extends AppCompatActivity {
         backIconImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono de retroceso, finaliza la actividad actual
                 finish();
             }
         });
@@ -65,7 +65,6 @@ public class ReservasActivity extends AppCompatActivity {
         misReservasIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono reservas, inicia MisReservasActivity
                 Intent intent = new Intent(ReservasActivity.this, MisReservasActivity.class);
                 startActivity(intent);
             }
@@ -90,11 +89,11 @@ public class ReservasActivity extends AppCompatActivity {
         userIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cuando se hace clic en el icono usuarios, inicia la UserActivity
                 Intent intent = new Intent(ReservasActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
+
 
         calendarView = findViewById(R.id.calenderView);
         calendar = Calendar.getInstance();
@@ -167,11 +166,12 @@ public class ReservasActivity extends AppCompatActivity {
         }
     }
 
+
     private void mostrarDialogoReservaTurno(final String turno, final String fechaSeleccionada) {
         // Verificar si el turno está reservado para la fecha seleccionada
         if (turnosReservados.contains(turno + " - " + fechaSeleccionada)) {
             // Si el turno ya está reservado, mostrar un mensaje
-            Toast.makeText(this, "Este turno ya está reservado para este día.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Este turno ya está reservado.", Toast.LENGTH_SHORT).show();
         } else {
             // Si el turno no está reservado, permitir la reserva
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -240,7 +240,6 @@ public class ReservasActivity extends AppCompatActivity {
     }
 
 
-
     // Método para obtener la fecha seleccionada en el calendario
     private String obtenerFechaSeleccionada() {
         // Obtener el año, mes y día del mes de la fecha seleccionada del objeto calendar
@@ -251,7 +250,6 @@ public class ReservasActivity extends AppCompatActivity {
         // Formatear la fecha seleccionada en el formato deseado
         return String.format(Locale.getDefault(), "%02d-%02d-%04d", dayOfMonth, month, year);
     }
-
 
 
 }

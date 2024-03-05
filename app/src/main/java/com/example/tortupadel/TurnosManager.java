@@ -9,9 +9,17 @@ import java.util.Locale;
 public class TurnosManager {
     private static TurnosManager instance;
     private List<String> turnosReservados;
+    private List<String> turnosDisponibles;
 
     private TurnosManager() {
         turnosReservados = new ArrayList<>();
+        // Inicializar la lista de turnos disponibles
+        turnosDisponibles = new ArrayList<>();
+        turnosDisponibles.add("Turno 15:30hs");
+        turnosDisponibles.add("Turno 17:00hs");
+        turnosDisponibles.add("Turno 18:30hs");
+        turnosDisponibles.add("Turno 20:00hs");
+        turnosDisponibles.add("Turno 21:30hs");
     }
 
     public static synchronized TurnosManager getInstance() {
@@ -30,8 +38,14 @@ public class TurnosManager {
     }
 
 
+    // Método para obtener los turnos disponibles
+    public List<String> getTurnosDisponibles() {
+        return turnosDisponibles;
+    }
+
+
     // Método para obtener los turnos disponibles del día actual
-    public List<String> getTurnosDisponiblesDelDia() {
+    public List<String> getTurnosDisponiblesDelDia( String fechaSeleccionada) {
         List<String> turnosDisponibles = new ArrayList<>();
         // Suponiendo que los turnos disponibles son para hoy
         // Puedes ajustar esta lógica según tus necesidades específicas
@@ -48,4 +62,6 @@ public class TurnosManager {
 
         return turnosDisponibles;
     }
+
+
 }

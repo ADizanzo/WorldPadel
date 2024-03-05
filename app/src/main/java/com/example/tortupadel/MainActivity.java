@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
         // Configurar la transición de desvanecimiento
         Fade fade = new Fade();
         fade.setDuration(3000); // Duración de la transición en milisegundos
@@ -36,5 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         }, 3000); // 3000 milisegundos = 3 segundos
+
     }
+
 }

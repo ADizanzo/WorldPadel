@@ -1,24 +1,17 @@
 <resources>
     <string name="app_name">tortuPadel</string>
 
+
     <!-- Logos -->
     <string name="logo_app">Logo de la aplicación</string>
     <string name="logo_app_blanco">Logo blanco de la aplicación</string>
 
+
     <!-- Flechas -->
     <string name="back_arrow">Flecha atrás</string>
+    <string name="arrow_left" />
+    <string name="arrow_right" />
 
-    <!-- Login y Registro -->
-    <string name="login_to_your_account">Inicia sesión en tu cuenta</string>
-    <string name="username">Nombre de usuario</string>
-    <string name="email">Correo electrónico</string>
-    <string name="password">Contraseña</string>
-    <string name="sign_in">Iniciar sesión</string>
-    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
-    <string name="sign_up">Registrarse</string>
-    <string name="create_your_account">Crea tu cuenta</string>
-    <string name="crear_cuenta">Crear Cuenta</string>
-    <string name="confirm_password">Confirmar contraseña</string>
 
     <!-- Iconos -->
     <string name="home">Inicio</string>
@@ -45,8 +38,23 @@
     <string name="mza_description">Mendoza Pádel Challenge: Descubre la emoción del pádel en Mendoza, donde el Challenge atrae a jugadores de todos los rincones de la provincia. Con su paisaje montañoso como telón de fondo, este torneo anual ofrece competencia de primer nivel y momentos inolvidables. Se lleva a cabo en los meses de otoño, brindando un ambiente acogedor y competitivo.</string>
     <string name="cba_description">Córdoba Pádel Cup: La ciudad de Córdoba es el escenario perfecto para la Pádel Cup, un torneo que combina la pasión por el deporte con la belleza natural de la región. Durante los meses de invierno, jugadores de todas las edades se reúnen para disfrutar de partidos emocionantes y una atmósfera festiva.</string>
 
-    <string name="rosario" />
-    <string name="torneoImage" />
+
+    <!-- Login y Registro -->
+    <string name="login_to_your_account">Inicia sesión en tu cuenta</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="sign_in">Iniciar sesión</string>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="sign_up">Registrarse</string>
+    <string name="create_your_account">Crea tu cuenta</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+
+
+    <!-- Torneos -->
+    <string name="torneo_title">Torneos</string>
+
 
     <!-- Perfil -->
     <string name="profile_image" />
@@ -57,7 +65,17 @@
     <string name="disponibilidad">Disponibilidad</string>
     <string name="localidad">Localidad</string>
     <string name="contacto">Contacto</string>
-    <string name="torneo_title">Torneos</string>
+
+
+
+
+    <string name="rosario" />
+
+    <string name="torneoImage" />
+    <string name="play_video_icon" />
+    <string name="torneoVideo" />
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
 
 
 </resources>

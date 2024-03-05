@@ -10,16 +10,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import java.util.List;
 
 public class TurnosAdapter extends ArrayAdapter<String> {
     private List<String> turnos;
+    private List<String> turnosDisponibles;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
         void onModificarClick(int position);
-
         void onEliminarClick(int position);
     }
 
@@ -27,9 +28,10 @@ public class TurnosAdapter extends ArrayAdapter<String> {
         mListener = listener;
     }
 
-    public TurnosAdapter(@NonNull Context context, @NonNull List<String> turnos) {
+    public TurnosAdapter(@NonNull Context context, @NonNull List<String> turnos, @NonNull List<String> turnosDisponibles) {
         super(context, 0, turnos);
         this.turnos = turnos;
+        this.turnosDisponibles = turnosDisponibles;
     }
 
     @NonNull
@@ -47,9 +49,18 @@ public class TurnosAdapter extends ArrayAdapter<String> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+
         String turno = turnos.get(position);
 
         holder.textView.setText(turno);
+
+
+        // Verificar si el turno está reservado
+        boolean turnoReservado = TurnosManager.getInstance().getTurnosReservados().contains(turno);
+
+        // Establecer el color de fondo según el estado del turno
+        int backgroundColor = ContextCompat.getColor(getContext(), turnoReservado ? R.color.soft_green : R.color.soft_red);
+        convertView.setBackgroundColor(backgroundColor);
 
         holder.modificarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,4 +88,8 @@ public class TurnosAdapter extends ArrayAdapter<String> {
         ImageView modificarButton;
         ImageView eliminarButton;
     }
+
+
+
+
 }

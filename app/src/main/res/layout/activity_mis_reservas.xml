@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <!-- Icono Back -->
     <ImageView
         android:id="@+id/backIcon"
@@ -21,7 +22,6 @@
         android:layout_below="@id/backIcon"
         android:layout_marginTop="32dp"
         android:layout_above="@id/bottomNavigationBar" >
-
     </ListView>
 
     <!-- Icono Añadir -->
@@ -36,7 +36,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="80dp" />
 
-    <!-- Barra de navegación inferior -->
+    <!-- Barra de Navegación -->
     <LinearLayout
         android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:padding="8dp"
         android:layout_alignParentBottom="true">
 
-        <!-- Icono 1 (Home) -->
+        <!-- Icono Home -->
         <ImageView
             android:id="@+id/home"
             android:layout_width="0dp"
@@ -55,7 +55,7 @@
             android:src="@drawable/home"
             android:contentDescription="@string/home"/>
 
-        <!-- Icono 2 (Reservas) -->
+        <!-- Icono Reservas -->
         <ImageView
             android:id="@+id/mis_reservas"
             android:layout_width="0dp"
@@ -64,7 +64,7 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
-        <!-- Icono 3 (Torneos) -->
+        <!-- Icono Torneos -->
         <ImageView
             android:id="@+id/torneo"
             android:layout_width="0dp"
@@ -73,7 +73,7 @@
             android:src="@drawable/torneo"
             android:contentDescription="@string/torneo"/>
 
-        <!-- Icono 4 (Usuario) -->
+        <!-- Icono Usuario -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"
@@ -83,5 +83,6 @@
             android:contentDescription="@string/usuario"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>

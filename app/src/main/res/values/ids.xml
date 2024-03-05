@@ -10,4 +10,7 @@
     <item name="signUpTextView" type="id" />
     <item name="confirmPasswordEditText" type="id" />
     <item name="fechaTextView" type="id" />
+    <item name="thumbnailImage1" type="id" />
+    <item name="thumbnailImage2" type="id" />
+    <item name="thumbnailImage3" type="id" />
 </resources>

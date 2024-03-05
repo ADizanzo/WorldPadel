@@ -55,7 +55,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Imagen del producto -->
+            <!-- Imagen del Torneo -->
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="100dp"
@@ -64,7 +64,7 @@
                 android:src="@drawable/ros"
                 tools:ignore="ImageContrastCheck" />
 
-            <!-- Título del producto -->
+            <!-- Título del Torneo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Imagen del producto -->
+            <!-- Imagen del Torneo -->
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="100dp"
@@ -113,7 +113,7 @@
                 android:src="@drawable/mza"
                 tools:ignore="ImageContrastCheck" />
 
-            <!-- Título del producto -->
+            <!-- Título del Torneo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Imagen del producto -->
+            <!-- Imagen del Torneo -->
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="100dp"
@@ -162,7 +162,7 @@
                 android:src="@drawable/bsas"
                 tools:ignore="ImageContrastCheck" />
 
-            <!-- Título del producto -->
+            <!-- Título del Torneo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Imagen del producto -->
+            <!-- Imagen del Torneo -->
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="100dp"
@@ -211,14 +211,14 @@
                 android:src="@drawable/cba"
                 tools:ignore="ImageContrastCheck" />
 
-            <!-- Título del producto -->
+            <!-- Título del Torneo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/torneo_cordoba"
                 android:textSize="18sp"
                 android:textColor="#000000"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp" />
 
             <!-- Icono "Más" -->
             <ImageView
@@ -228,7 +228,7 @@
                 android:src="@drawable/add_icon"
                 android:layout_gravity="end"
                 android:layout_marginTop="8dp"
-                android:contentDescription="@string/add_icon"/>
+                android:contentDescription="@string/add_icon" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -245,7 +245,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Icono 1 (Home) -->
+        <!-- Icono Home -->
         <ImageView
             android:id="@+id/home"
             android:layout_width="0dp"
@@ -254,7 +254,7 @@
             android:src="@drawable/home"
             android:contentDescription="@string/home"/>
 
-        <!-- Icono 2 (Mis Reservas) -->
+        <!-- Icono Mis Reservas -->
         <ImageView
             android:id="@+id/mis_reservas"
             android:layout_width="0dp"
@@ -263,7 +263,7 @@
             android:src="@drawable/calendar"
             android:contentDescription="@string/mis_reservas"/>
 
-        <!-- Icono 3 (Torneos) -->
+        <!-- Icono Torneos -->
         <ImageView
             android:id="@+id/torneo"
             android:layout_width="0dp"
@@ -272,7 +272,7 @@
             android:src="@drawable/torneo"
             android:contentDescription="@string/torneo"/>
 
-        <!-- Icono 4 (Usuario) -->
+        <!-- Icono Usuario -->
         <ImageView
             android:id="@+id/user"
             android:layout_width="0dp"

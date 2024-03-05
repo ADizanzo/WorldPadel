@@ -155,9 +155,9 @@ public class TorneoDetailActivity extends AppCompatActivity {
 
             // Configura el video para el VideoView
             videoView.setVideoURI(videoUri);
-            videoView.start(); // Inicia la reproducción del video
+            videoView.start();
         } else {
-            // Si no es la última, asegúrate de que la ImageView esté visible y el VideoView esté oculto
+            // Si no es la última, la ImageView está visible y el VideoView está oculto
             torneoImageView.setVisibility(View.VISIBLE);
 
             // Obtén la referencia al VideoView y asegúrate de que esté oculto
@@ -170,22 +170,7 @@ public class TorneoDetailActivity extends AppCompatActivity {
     }
 
 
-
     // Método para obtener el recurso de video correspondiente al índice
-    private int getVideoResource(int index) {
-        switch (index) {
-            case 0:
-                return R.raw.videoros;
-            case 1:
-                return R.raw.videomza;
-            case 2:
-                return R.raw.videobsas;
-            case 3:
-                return R.raw.videocba;
-            default:
-                return R.raw.videoros; // Por defecto, devuelve el primer video
-        }
-    }
 
 
 

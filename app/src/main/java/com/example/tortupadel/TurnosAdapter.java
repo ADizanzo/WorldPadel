@@ -15,8 +15,7 @@ import androidx.core.content.ContextCompat;
 import java.util.List;
 
 public class TurnosAdapter extends ArrayAdapter<String> {
-    private List<String> turnos;
-    private List<String> turnosDisponibles;
+    private final List<String> turnos;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
@@ -28,10 +27,9 @@ public class TurnosAdapter extends ArrayAdapter<String> {
         mListener = listener;
     }
 
-    public TurnosAdapter(@NonNull Context context, @NonNull List<String> turnos, @NonNull List<String> turnosDisponibles) {
+    public TurnosAdapter(@NonNull Context context, @NonNull List<String> turnos) {
         super(context, 0, turnos);
         this.turnos = turnos;
-        this.turnosDisponibles = turnosDisponibles;
     }
 
     @NonNull
@@ -88,8 +86,5 @@ public class TurnosAdapter extends ArrayAdapter<String> {
         ImageView modificarButton;
         ImageView eliminarButton;
     }
-
-
-
 
 }

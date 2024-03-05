@@ -20,19 +20,6 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-   <!-- <ImageView
-        android:id="@+id/toolbarIcon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/icon_menu"
-        android:src="@drawable/menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" /> -->
-
-
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"

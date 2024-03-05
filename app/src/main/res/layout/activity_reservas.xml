@@ -75,7 +75,6 @@
             android:layout_weight="1"
             android:src="@drawable/usuario"
             android:contentDescription="@string/usuario"/>
-
     </LinearLayout>
 
 </LinearLayout>

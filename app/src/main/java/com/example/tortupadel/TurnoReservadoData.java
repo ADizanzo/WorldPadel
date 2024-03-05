@@ -1,19 +1,14 @@
 package com.example.tortupadel;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TurnoReservadoData {
 
     private SQLiteDatabase database;
-    private TurnosDatabaseHelper dbHelper;
+    private final TurnosDatabaseHelper dbHelper;
 
     public TurnoReservadoData(Context context) {
         dbHelper = new TurnosDatabaseHelper(context);
@@ -51,29 +46,6 @@ public class TurnoReservadoData {
                 TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO + " = ?",
                 new String[]{turnoExistente}
         );
-    }
-
-
-    // Método para obtener todos los turnos reservados
-    public List<String> obtenerTodosLosTurnosReservados() {
-        List<String> turnosReservados = new ArrayList<>();
-        Cursor cursor = database.query(
-                TurnoReservadoContract.TurnoReservadoEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            @SuppressLint("Range") String turno = cursor.getString(cursor.getColumnIndex(TurnoReservadoContract.TurnoReservadoEntry.COLUMN_TURNO));
-            turnosReservados.add(turno);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return turnosReservados;
     }
 
 

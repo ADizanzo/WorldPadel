@@ -130,7 +130,7 @@ public class ReservasActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String fechaSeleccionada = obtenerFechaSeleccionada();
+               // String fechaSeleccionada = obtenerFechaSeleccionada();
                 mostrarDialogoReservaTurno(adapter.getItem(position), obtenerFechaSeleccionada());
             }
         });
@@ -213,31 +213,6 @@ public class ReservasActivity extends AppCompatActivity {
     }
 
 
-    @NonNull
-    private List<String> obtenerTodosLosTurnosReservados(String fechaSeleccionada) {
-        // Lista para almacenar los turnos reservados para la fecha seleccionada
-        List<String> turnosReservados = new ArrayList<>();
-
-        // Crear una instancia de la clase TurnoReservadoData para acceder a la base de datos
-        TurnoReservadoData dataSource = new TurnoReservadoData(this);
-        dataSource.open();
-
-        // Obtener todos los turnos reservados de la base de datos para la fecha seleccionada
-        List<String> turnosReservadosDB = dataSource.obtenerTodosLosTurnosReservados();
-
-        // Cerrar la conexión con la base de datos
-        dataSource.close();
-
-        // Filtrar los turnos reservados para la fecha seleccionada
-        for (String turnoReservado : turnosReservadosDB) {
-            // Comprobar si el turno reservado contiene la fecha seleccionada
-            if (turnoReservado.contains(fechaSeleccionada)) {
-                turnosReservados.add(turnoReservado);
-            }
-        }
-
-        return turnosReservados;
-    }
 
 
     // Método para obtener la fecha seleccionada en el calendario

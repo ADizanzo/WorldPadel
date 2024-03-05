@@ -8,14 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UsuariosHelper extends SQLiteOpenHelper {
 
-    // Nombre de la bbdd
     private static final String DATABASE_NAME = "usuarios.db";
     private static final int DATABASE_VERSION = 1;
 
-    // Nombre de la tabla
+
     private static final String USERS_TABLE_NAME = "users";
 
-    // Nombres de las columnas
+
     private static final String COLUMN_USER_ID = "_id";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
@@ -68,8 +67,7 @@ public class UsuariosHelper extends SQLiteOpenHelper {
                 null
         );
         try {
-            boolean result = cursor.getCount() > 0;
-            return result;
+            return cursor.getCount() > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;

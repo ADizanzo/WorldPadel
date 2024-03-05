@@ -25,15 +25,13 @@ public class MisReservasActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listViewMisReservas);
 
-        // Obtener la fecha seleccionada del Intent
-        String fechaSeleccionada = getIntent().getStringExtra("fechaSeleccionada");
 
         // Obtener la lista de turnos reservados
         TurnosManager turnosManager = TurnosManager.getInstance();
         turnosReservados = turnosManager.getTurnosReservados();
 
         // Inicializar el adaptador con la lista de turnos reservados
-        adapter = new TurnosAdapter(this, turnosReservados, turnosReservados);
+        adapter = new TurnosAdapter(this, turnosReservados);
 
         // Establecer el adaptador en la ListView
         listView.setAdapter(adapter);
@@ -142,6 +140,7 @@ public class MisReservasActivity extends AppCompatActivity {
             }
         }
     }
+
 
     private void eliminarTurno(int position) {
         TurnoReservadoData dataSource = new TurnoReservadoData(MisReservasActivity.this);

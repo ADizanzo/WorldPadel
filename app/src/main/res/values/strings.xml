@@ -52,8 +52,17 @@
     <string name="confirm_password">Confirmar contraseña</string>
 
 
+    <!-- Mis Reservas -->
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
+
+
     <!-- Torneos -->
     <string name="torneo_title">Torneos</string>
+    <string name="rosario" />
+    <string name="torneoImage" />
+    <string name="play_video_icon" />
+    <string name="torneoVideo" />
 
 
     <!-- Perfil -->
@@ -66,16 +75,6 @@
     <string name="localidad">Localidad</string>
     <string name="contacto">Contacto</string>
 
-
-
-
-    <string name="rosario" />
-
-    <string name="torneoImage" />
-    <string name="play_video_icon" />
-    <string name="torneoVideo" />
-    <string name="modificar">Modificar</string>
-    <string name="eliminar">Eliminar</string>
 
 
 </resources>

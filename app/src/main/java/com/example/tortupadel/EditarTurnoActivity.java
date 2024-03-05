@@ -13,23 +13,21 @@ import java.util.List;
 
 public class EditarTurnoActivity extends AppCompatActivity {
     private EditText editTextTurno;
-    private Button buttonGuardar;
     private List<String> turnosDisponibles;
-    private String fechaSeleccionada;
-    private static final int EDITAR_TURNO_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_turno);
 
-        editTextTurno = findViewById(R.id.editTextTurno);
-        buttonGuardar = findViewById(R.id.buttonGuardar);
 
-        // Obtener el turno a editar y la fecha seleccionada del intent
+        editTextTurno = findViewById(R.id.editTextTurno);
+        Button buttonGuardar = findViewById(R.id.buttonGuardar);
+
+        // Obtener el turno a editar
         Intent intent = getIntent();
         String turno = intent.getStringExtra("turno");
-        fechaSeleccionada = intent.getStringExtra("fechaSeleccionada");
+
 
         // Mostrar el turno en el EditText
         editTextTurno.setText(turno);
@@ -39,7 +37,7 @@ public class EditarTurnoActivity extends AppCompatActivity {
         editTextTurno.setClickable(true);
 
         // Obtener los turnos disponibles para la fecha seleccionada
-        turnosDisponibles = TurnosManager.getInstance().getTurnosDisponiblesDelDia(fechaSeleccionada);
+        turnosDisponibles = TurnosManager.getInstance().getTurnosDisponiblesDelDia();
 
         // Configurar el OnClickListener para el EditText para mostrar los turnos disponibles
         editTextTurno.setOnClickListener(v -> mostrarTurnosDisponibles());
@@ -93,13 +91,7 @@ public class EditarTurnoActivity extends AppCompatActivity {
         }
     }
 
-    // Añadido código proporcionado
-    private void iniciarEditarTurnoActivity(String turno, String fechaSeleccionada) {
-        Intent intent = new Intent(this, EditarTurnoActivity.class);
-        intent.putExtra("turno", turno);
-        intent.putExtra("fechaSeleccionada", fechaSeleccionada);
-        startActivityForResult(intent, EDITAR_TURNO_REQUEST);
-    }
+
 
 
 }

@@ -1,10 +1,12 @@
 package com.example.tortupadel;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UsuariosHelper extends SQLiteOpenHelper {
 
@@ -43,7 +45,7 @@ public class UsuariosHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, username);
-        values.put(COLUMN_PASSWORD, password);
+        values.put(COLUMN_PASSWORD, BCrypt.hashpw(password, BCrypt.gensalt())); // Cifrar la contraseña antes de almacenarla
         try {
             long result = db.insert(USERS_TABLE_NAME, null, values);
             return result != -1;
@@ -60,14 +62,21 @@ public class UsuariosHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(
                 USERS_TABLE_NAME,
                 null,
-                COLUMN_USERNAME + " = ? AND " + COLUMN_PASSWORD + " = ?",
-                new String[]{username, password},
+                COLUMN_USERNAME + " = ?",
+                new String[]{username},
                 null,
                 null,
                 null
         );
         try {
-            return cursor.getCount() > 0;
+            if (cursor.moveToFirst()) {
+                @SuppressLint("Range") String storedPassword = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
+                // Verificar la contraseña utilizando bcrypt
+                return BCrypt.checkpw(password, storedPassword);
+            } else {
+                // El usuario no existe
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;

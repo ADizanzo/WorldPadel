@@ -3,7 +3,6 @@ package com.example.tortupadel;
 import android.content.Context;
 
 public class UserManager {
-
     private final UsuariosHelper dbHelper;
 
     public UserManager(Context context) {
@@ -20,6 +19,4 @@ public class UserManager {
         // Verificar si usuario y contraseña coinciden en la base de datos.
         return dbHelper.checkUserCredentials(username, password);
     }
-
-
 }
